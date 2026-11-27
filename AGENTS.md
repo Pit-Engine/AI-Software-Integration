@@ -11,9 +11,10 @@ Read [PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md) before starting framewor
 ## Integration workflow
 
 1. Inspect the target's existing workflows, entry points, data formats, tests, and conventions before proposing changes.
+   During inspection, also look for ambiguous outcomes and unexpected domain phenomena using [the diagnostic case assessment guidance](docs/integrations/ambiguous-result-assessment.md). Identify discriminating checks and potential benchmarks, not just ordinary happy paths.
 2. Present selectable options based on the target, with tradeoffs, a recommended starting point, and explicit acceptance criteria. Proceed with substantial implementation once the user has chosen or already authorized the scope.
 3. Use the application's existing entry points and preserve normal operation. Keep numerical calculations and validation in deterministic code. Follow the charter for permissions, previews, and approvals.
-4. Verify the new behavior against the acceptance criteria and check the affected existing workflows. Report which tests ran and distinguish observed results from assumptions and open questions.
+4. Verify the new behavior against the acceptance criteria and check the affected existing workflows. Use the [workflow-centered evaluation checklist](docs/integrations/workflow-evaluation-checklist.md) as appropriate, including capability readiness, multi-step interactions and evidence boundaries. Report which tests ran and distinguish observed results from assumptions and open questions.
 5. At a meaningful milestone, hand back the target revision, scope, test evidence, limitations, and lessons that could help the next integration. Use the [full workflow](PROJECT_INSTRUCTIONS.md#7-mandatory-workflow-for-individual-software-integrations) for the handoff details.
 
 Keep credentials out of code, commits, fixtures, and logs. Use approved providers and data, and validate model outputs before they can affect application state.
