@@ -1,0 +1,19 @@
+# Generalized parameter sweeps and scoped retrieval tools
+
+Status: Stage 7.3.1 local prototype and partial Stage 7.4 local retrieval foundation, 2026-11-27. Live tool protocol and model-directed use not verified.
+
+## Generalizable numerical representation
+
+Inspect every actual independent variable supported by the application before specializing a numerical-result adapter. Use a common representation for one-dimensional sweeps: axis identity and units, fixed inputs, swept object identity, exact sampled coordinates, numerical outputs and diagnostic provenance. Explicitly specify which baseline input is overridden at each grid point. Treat displayed quantities separately from the underlying numerical results. Do not interpret structural coordinates as frequency or transplant frequency-specific cutoff rules to arbitrary axes. Compare axes, fixed inputs and grids before drawing conclusions from extrema or trends. Preserve older archive formats where possible and distinguish legacy schema labels from scientific meaning. Generalize to multidimensional grids only when supported by application evidence.
+
+## Scoped local retrieval
+
+Prototype local reader exposes five validated functions: list approved records, retrieve originating configuration, retrieve single-mode result, retrieve exact paginated sweep ranges and deterministic single-mode comparisons. An explicit caller-approved ID set and captured checksums define scope. Changed/deleted records fail instead of silently returning different evidence. No arbitrary paths or commands, no solver execution, no network access. Reject extra arguments, invalid numbers/types and unknown tools. Six-call budget (including invalid attempts), 20 KiB per-call and 64 KiB aggregate local serialized output budget; provider-side wire-size/time limits still needed. Archive reads retain existing local retention housekeeping. Paginate and return explicit omissions and actual coordinates; never invent missing samples or interpolate implicitly. The model is not connected to these functions yet.
+
+## Provider prerequisite
+
+Native DESY tool-call support is unverified; ordinary text completion success is not proof of tool-result round-trip support. A target-local manually invoked synthetic probe tests a forced function call and subsequent tool response, without solver configuration, archive data, or real research context. Mocked protocol tests passed; live probe not run. Evaluate native protocol before selecting a coordinator implementation; do not automatically fall back to broad data transmission or unrestricted interpretation of model-produced commands. For the future coordinator, independently approve archive scope and external transmission, log actual activity events, support cancellation between requests, validate tool results, and bound total requests/time/bytes. One successful probe would establish only the tested protocol exchange, not general reliability.
+
+## Evidence and limitations
+
+Target supports all six existing one-dimensional sweep axes in summaries and optional persistent archive. Old frequency records preserved, structural records carry explicit axis and grid. 96 AI unit tests passed, two new real GUI tests (radius and radial/axial permittivity sweeps checked against analytical solutions), five sweep/archive GUI regression tests and two debug-history tests passed. Corrected a mismatch between request-event fields and the journal allowlist introduced by earlier context additions. No numerical solver or sweep algorithm changes. Conductivity axes tested using synthetic data rather than independent physical accuracy tests. Windows, full regression, live DESY, multidimensional sweeps and actual live activity display remain outstanding. Initial unit failures concerned stale expected prompt version and test fixture import; corrected before passing. Target implementation and data remain local; no application code or logs copied into framework.
